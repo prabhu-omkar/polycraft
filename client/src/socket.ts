@@ -1,8 +1,8 @@
 import { io } from 'socket.io-client';
 
-// In development, Vite proxies /socket.io to the backend (port 3001)
-// The socket.io client should connect to the same origin where the page is served
-const socket = io({
+const URL = import.meta.env.VITE_API_URL || undefined;
+
+const socket = io(URL as any, {
   transports: ['websocket', 'polling'],
   autoConnect: true,
 });
